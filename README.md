@@ -159,17 +159,34 @@ Zariadenia sú zoradené podľa vytvorenia. Posledný ping sa načítava hromadn
 
 ## Dokumentácia API
 
-Dokumentácia sa generuje automaticky z kódu (routy, FormRequesty a API Resources) pomocou [Scramble](https://scramble.dedoc.co/).
+Dokumentácia sa generuje automaticky z kódu (routy, FormRequesty a API Resources) pomocou [Scramble](https://scramble.dedoc.co/). Žiadny samostatný server netreba, beží spolu s aplikáciou.
 
-- Interaktívna dokumentácia (s možnosťou vyskúšať požiadavky): <http://localhost:8000/docs/api>. Je dostupná len v prostredí `APP_ENV=local`.
-- Špecifikácia OpenAPI: [`docs/openapi.json`](docs/openapi.json). Dá sa importovať napríklad do Postmana. Po zmene API ju treba znova vygenerovať:
+### Ako ju spustiť
 
-  ```bash
-  docker compose exec app php artisan scramble:export
-  ```
+1. Spusti aplikáciu podľa návodu vyššie (kroky 1 až 5, najmä `docker compose up -d`). Ak už beží, tento krok vynechaj.
+2. Otvor v prehliadači <http://localhost:8000/docs/api>.
 
-  Test `DocumentationTest` zlyhá, ak je súbor neaktuálny.
-- [`docs/requests.http`](docs/requests.http): ukážkové požiadavky, ktoré sa dajú spustiť priamo v PhpStorme.
+V ľavom paneli sú endpointy so skupinou **Device**. Po otvorení endpointu sa zobrazí popis, parametre, príklady odpovedí a ukážka curl. Tlačidlom **Send API Request** sa dá požiadavka poslať priamo zo stránky.
+
+Poznámky:
+
+- Stránka je dostupná len pri `APP_ENV=local` (predvolené v `.env.example`). V iných prostrediach vráti 403.
+- Ak sa nenačíta, over, že aplikácia beží: <http://localhost:8000/up>.
+- Aplikácia musí mať spustené migrácie (krok 5), inak dokumentácia nevie zistiť typy stĺpcov.
+
+### Špecifikácia OpenAPI
+
+[`docs/openapi.json`](docs/openapi.json) sa dá importovať napríklad do Postmana. Po zmene API ju treba znova vygenerovať:
+
+```bash
+docker compose exec app php artisan scramble:export
+```
+
+Test `DocumentationTest` zlyhá, ak je súbor neaktuálny.
+
+### Ukážkové požiadavky
+
+[`docs/requests.http`](docs/requests.http) obsahuje požiadavky, ktoré sa dajú spustiť priamo v PhpStorme.
 
 ## Štruktúra
 
