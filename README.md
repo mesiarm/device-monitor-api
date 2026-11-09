@@ -18,7 +18,7 @@ cd device-monitor-api
    cp .env.example .env
    ```
 
-   Predvolené hodnoty v `.env.example` sú nastavené pre Docker (databáza `db`, používateľ `laravel`), netreba ich meniť.
+   Predvolené hodnoty v `.env.example` sú nastavené pre Docker (databáza `db`, používateľ `device_monitor`), netreba ich meniť. Prihlasovacie údaje k databáze sú len na jednom mieste, v `.env`, a z neho ich preberá aj `docker-compose.yml`.
 
 2. Zostavenie obrazu a inštalácia závislostí:
 
@@ -188,4 +188,5 @@ Dokumentácia sa generuje automaticky z kódu (routy, FormRequesty a API Resourc
 
 - Posledný ping sa určuje podľa `created_at`, pri zhode podľa `id`.
 - Tabuľka `pings` má podľa zadania iba `created_at`, preto model `Ping` nepoužíva `updated_at`.
+- Heslá v `.env.example` (`DB_PASSWORD`, `DB_ROOT_PASSWORD`) sú len vývojové. Pred nasadením ich treba zmeniť. Databáza si heslá zapíše pri prvom spustení, preto po ich zmene treba urobiť `docker compose down -v` (zmaže aj dáta).
 - V `.env.example` je `APP_DEBUG=true` kvôli lokálnemu vývoju. Pri nasadení ho treba nastaviť na `false`.
