@@ -1,0 +1,32 @@
+### Ukážkové požiadavky (PhpStorm / VS Code REST Client)
+### Pred použitím musí bežať aplikácia: docker compose up -d
+
+@host = http://localhost:8000/api
+@uuid = 550e8400-e29b-41d4-a716-446655440000
+
+### Vytvorenie zariadenia
+POST {{host}}/devices
+Content-Type: application/json
+Accept: application/json
+
+{
+  "uuid": "{{uuid}}",
+  "name": "Sensor 01"
+}
+
+### Uloženie pingu
+POST {{host}}/devices/{{uuid}}/ping
+Content-Type: application/json
+Accept: application/json
+
+{
+  "battery_percent": 85
+}
+
+### Detail zariadenia
+GET {{host}}/devices/{{uuid}}
+Accept: application/json
+
+### Zoznam zariadení
+GET {{host}}/devices
+Accept: application/json

@@ -157,6 +157,11 @@ curl -H 'Accept: application/json' http://localhost:8000/api/devices
 
 Zariadenia sú zoradené podľa vytvorenia. Posledný ping sa načítava hromadne, takže počet dotazov nezávisí od počtu zariadení.
 
+## Dokumentácia API
+
+- [`docs/openapi.yaml`](docs/openapi.yaml): špecifikácia OpenAPI 3.0. Dá sa otvoriť napríklad v [Swagger Editore](https://editor.swagger.io/) alebo importovať do Postmana.
+- [`docs/requests.http`](docs/requests.http): ukážkové požiadavky, ktoré sa dajú spustiť priamo v PhpStorme.
+
 ## Štruktúra
 
 | Časť | Umiestnenie |
@@ -168,6 +173,7 @@ Zariadenia sú zoradené podľa vytvorenia. Posledný ping sa načítava hromadn
 | Modely | `app/Models/Device.php`, `app/Models/Ping.php` |
 | Migrácie a factories | `database/migrations/`, `database/factories/` |
 | Testy | `tests/Feature/Api/`, `tests/Unit/` |
+| Dokumentácia API | `docs/` |
 
 ## Poznámky
 
