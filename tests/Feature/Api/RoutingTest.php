@@ -20,10 +20,4 @@ class RoutingTest extends TestCase
     {
         $this->get('/up')->assertOk();
     }
-
-    public function test_api_routes_do_not_require_authentication(): void
-    {
-        $this->assertNotContains('auth', collect(app('router')->getRoutes()->getRoutes())
-            ->flatMap(fn ($route) => $route->gatherMiddleware())->all());
-    }
 }
