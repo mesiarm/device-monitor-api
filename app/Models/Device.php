@@ -26,6 +26,6 @@ class Device extends Model
 
     public function latestPing(): HasOne
     {
-        return $this->hasOne(Ping::class)->latestOfMany();
+        return $this->hasOne(Ping::class)->ofMany(['created_at' => 'max', 'id' => 'max']);
     }
 }

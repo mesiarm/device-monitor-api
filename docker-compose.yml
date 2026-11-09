@@ -5,13 +5,6 @@ services:
       - "8000:8000"
     volumes:
       - .:/var/www/html
-    environment:
-      DB_CONNECTION: mysql
-      DB_HOST: db
-      DB_PORT: 3306
-      DB_DATABASE: device_monitor
-      DB_USERNAME: laravel
-      DB_PASSWORD: secret
     depends_on:
       db:
         condition: service_healthy
