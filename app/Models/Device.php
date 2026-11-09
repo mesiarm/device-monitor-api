@@ -14,6 +14,11 @@ class Device extends Model
 
     protected $fillable = ['uuid', 'name'];
 
+    public function getRouteKeyName(): string
+    {
+        return 'uuid';
+    }
+
     public function pings(): HasMany
     {
         return $this->hasMany(Ping::class);
