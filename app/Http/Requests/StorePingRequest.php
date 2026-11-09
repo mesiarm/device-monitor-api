@@ -17,6 +17,7 @@ class StorePingRequest extends FormRequest
     public function rules(): array
     {
         return [
+            /** @example 85 */
             'battery_percent' => ['required', 'integer:strict', 'between:0,100'],
         ];
     }

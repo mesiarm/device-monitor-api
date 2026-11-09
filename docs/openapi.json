@@ -168,21 +168,33 @@
                 "type": "object",
                 "properties": {
                     "uuid": {
-                        "type": "string"
+                        "type": "string",
+                        "examples": [
+                            "550e8400-e29b-41d4-a716-446655440000"
+                        ]
                     },
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "examples": [
+                            "Sensor 01"
+                        ]
                     },
                     "last_ping": {
                         "type": [
                             "string",
                             "null"
+                        ],
+                        "examples": [
+                            "2026-05-26T10:00:00Z"
                         ]
                     },
                     "last_battery_percent": {
                         "type": [
                             "integer",
                             "null"
+                        ],
+                        "examples": [
+                            85
                         ]
                     }
                 },
@@ -198,15 +210,24 @@
                 "type": "object",
                 "properties": {
                     "uuid": {
-                        "type": "string"
+                        "type": "string",
+                        "examples": [
+                            "550e8400-e29b-41d4-a716-446655440000"
+                        ]
                     },
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "examples": [
+                            "Sensor 01"
+                        ]
                     },
                     "last_battery_percent": {
                         "type": [
                             "integer",
                             "null"
+                        ],
+                        "examples": [
+                            85
                         ]
                     }
                 },
@@ -221,13 +242,22 @@
                 "type": "object",
                 "properties": {
                     "id": {
-                        "type": "integer"
+                        "type": "integer",
+                        "examples": [
+                            1
+                        ]
                     },
                     "uuid": {
-                        "type": "string"
+                        "type": "string",
+                        "examples": [
+                            "550e8400-e29b-41d4-a716-446655440000"
+                        ]
                     },
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "examples": [
+                            "Sensor 01"
+                        ]
                     }
                 },
                 "required": [
@@ -242,10 +272,16 @@
                 "properties": {
                     "uuid": {
                         "type": "string",
-                        "format": "uuid"
+                        "format": "uuid",
+                        "examples": [
+                            "550e8400-e29b-41d4-a716-446655440000"
+                        ]
                     },
                     "name": {
                         "type": "string",
+                        "examples": [
+                            "Sensor 01"
+                        ],
                         "maxLength": 255
                     }
                 },
@@ -260,6 +296,9 @@
                 "properties": {
                     "battery_percent": {
                         "type": "integer",
+                        "examples": [
+                            85
+                        ],
                         "minimum": 0,
                         "maximum": 100
                     }
