@@ -13,6 +13,11 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class DeviceController extends Controller
 {
+    /**
+     * Zoznam zariadení
+     *
+     * Zariadenia zoradené podľa vytvorenia. Ak zariadenie nemá žiadny ping, `last_battery_percent` je `null`.
+     */
     public function index(): AnonymousResourceCollection
     {
         return DeviceListResource::collection(
@@ -20,6 +25,9 @@ class DeviceController extends Controller
         );
     }
 
+    /**
+     * Vytvorenie zariadenia
+     */
     public function store(StoreDeviceRequest $request): JsonResponse
     {
         $device = Device::create($request->validated());
@@ -27,11 +35,23 @@ class DeviceController extends Controller
         return DeviceResource::make($device)->response()->setStatusCode(201);
     }
 
+    /**
+     * Detail zariadenia
+     *
+     * Vráti posledný ping zariadenia. Ak žiadny nie je, `last_ping` aj `last_battery_percent` sú `null`.
+     *
+     * @param  Device  $device  UUID zariadenia (nie číselné `id`)
+     */
     public function show(Device $device): DeviceDetailResource
     {
         return DeviceDetailResource::make($device->load('latestPing'));
     }
 
+    /**
+     * Uloženie pingu zariadenia
+     *
+     * @param  Device  $device  UUID zariadenia (nie číselné `id`)
+     */
     public function ping(StorePingRequest $request, Device $device): JsonResponse
     {
         $device->pings()->create($request->validated());

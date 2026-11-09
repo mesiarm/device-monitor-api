@@ -159,7 +159,16 @@ Zariadenia sú zoradené podľa vytvorenia. Posledný ping sa načítava hromadn
 
 ## Dokumentácia API
 
-- [`docs/openapi.yaml`](docs/openapi.yaml): špecifikácia OpenAPI 3.0. Dá sa otvoriť napríklad v [Swagger Editore](https://editor.swagger.io/) alebo importovať do Postmana.
+Dokumentácia sa generuje automaticky z kódu (routy, FormRequesty a API Resources) pomocou [Scramble](https://scramble.dedoc.co/).
+
+- Interaktívna dokumentácia (s možnosťou vyskúšať požiadavky): <http://localhost:8000/docs/api>. Je dostupná len v prostredí `APP_ENV=local`.
+- Špecifikácia OpenAPI: [`docs/openapi.json`](docs/openapi.json). Dá sa importovať napríklad do Postmana. Po zmene API ju treba znova vygenerovať:
+
+  ```bash
+  docker compose exec app php artisan scramble:export
+  ```
+
+  Test `DocumentationTest` zlyhá, ak je súbor neaktuálny.
 - [`docs/requests.http`](docs/requests.http): ukážkové požiadavky, ktoré sa dajú spustiť priamo v PhpStorme.
 
 ## Štruktúra
